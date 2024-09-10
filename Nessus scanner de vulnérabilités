@@ -1,0 +1,43 @@
+Pour se familiariser avec le rôle d’analyste SOC, je vais prendre en main Nessus, un scanner de vulnérabilités de réseau.
+
+Dans le cadre de ce projet, j’aurai besoin : d’une machine virtuelle, de Nessus et d'une image Windows .iso.
+
+J’ai choisi d’utiliser VirtualBox, mais VMWare aurait très bien pu faire le travail. Je crée une machine Windows sur VirtualBox. Après avoir effectué le setup, je dois faire quelques réglages préalables pour pouvoir m’amuser avec Nessus.
+
+Je vais rendre ma machine volontairement vulnérable pour que Nessus puisse détecter différentes vulnérabilités. Je commence par mettre en pause les mises à jour dans Windows Update. Windows permet de suspendre les mises à jour pendant 7 jours, mais on peut augmenter cette période dans les paramètres avancés de cette section.
+
+Updates.png
+
+Ensuite, je vais enlever les mises à jour déjà installées. Je vais dans la section pour voir l’historique des mises à jour et clique sur “Désinstaller”.
+
+Enlever les màj.png
+
+Théoriquement, il ne devrait rester que ces mises à jour impossibles à enlever.
+
+Choisir les màj à enlever.png
+
+Après m’être occupé de cela, je dois m’occuper du Pare-feu Windows Defender. Je vais dans les paramètres avancés et sélectionne la section “Propriétés”.
+
+Windows defender advanced settings into properties.png
+
+Je vais mettre l’état de tous les profils sur “Désactivé”.
+
+All profiles to off.png
+
+La dernière étape est de configurer le mode d’accès réseau de VirtualBox sur "Réseau privé hôte", d’une part pour se protéger et d’autre part pour pouvoir utiliser Nessus pleinement sur notre machine.
+
+VB Nessus Network.png
+
+Dernière étape, vérifier qu’on est accessible. J’utilise “ipconfig” sur le Terminal pour obtenir mon adresse IP et je ping ma propre adresse pour vérifier que je suis disponible.
+
+Verification que tout est en place.png
+
+Je crée un compte Nessus et fais les installations nécessaires. Une fois cela fait, je crée un scan en entrant mon adresse IP. Le scan prend quelques minutes. Une fois le scan terminé, j’obtiens une interface comme celle-ci.
+
+Screenshot 2024-09-10 at 02-57-12 Nessus Essentials _ Folders _ View Scan.png
+
+En cliquant sur une des vulnérabilités, je peux voir pourquoi elle existe, les solutions pour y remédier et des ressources sur cette vulnérabilité. Je peux colmater les failles dans ma défense moi-même et vérifier avec de nouveaux scans.
+
+Screenshot 2024-09-10 at 03-08-47 Nessus Essentials _ Folders _ View Scan.png
+
+Je peux approfondir cette mise en situation en utilisant les Credentials, mais ce sera dans un post dédié qui arrivera plus tard.
